@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Flower Data</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- floating label -->
+    <string name="sheridan">Sheridan, 2020</string>
+
+    <!-- about dialog -->
+    <string name="about">About</string>
+    <string name="author">Alex Tetervak, Sheridan College, 2020</string>
+
+</resources>
