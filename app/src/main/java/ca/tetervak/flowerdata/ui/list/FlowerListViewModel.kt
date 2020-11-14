@@ -1,5 +1,6 @@
 package ca.tetervak.flowerdata.ui.list
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,16 +21,10 @@ class FlowerListViewModel : ViewModel() {
     // The external immutable LiveData for the response String
     val flowers: LiveData<List<Flower>> = _flowers
 
-    /**
-     * Call getMarsRealEstateProperties() on init so we can display status immediately.
-     */
     init {
         getFlowers()
     }
 
-    /**
-     * Sets the value of the status LiveData to the Mars API status.
-     */
     private fun getFlowers() {
 
         viewModelScope.launch {
@@ -37,13 +32,8 @@ class FlowerListViewModel : ViewModel() {
                 val catalog = FlowerDataApi.retrofitService.getCatalog()
                 _flowers.value = catalog.flowers
             } catch (e: Exception) {
-                //_flowers.value = "Failure: ${e.message}"
+                Log.e("NETWORK","Failure: ${e.message}")
             }
         }
-
     }
-    
-
-
-
 }
