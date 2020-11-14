@@ -1,32 +1,33 @@
 package ca.tetervak.flowerdata.ui.list
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ca.tetervak.flowerdata.R
+import androidx.fragment.app.viewModels
+
+import ca.tetervak.flowerdata.databinding.FlowerListFragmentBinding
 
 class FlowerListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FlowerListFragment()
-    }
-
-    private lateinit var viewModel: FlowerListViewModel
+    private val viewModel: FlowerListViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.flower_list_fragment, container, false)
+        val binding = FlowerListFragmentBinding.inflate(inflater)
+
+        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
+        binding.lifecycleOwner = viewLifecycleOwner
+
+        // Giving the binding access to the OverviewViewModel
+        binding.viewModel = viewModel
+
+
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FlowerListViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

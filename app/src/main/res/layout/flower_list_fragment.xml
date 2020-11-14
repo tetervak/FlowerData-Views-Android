@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="ca.tetervak.flowerdata.ui.list.FlowerListViewModel"/>
+        <variable
+            name="viewModel"
+            type="FlowerListViewModel" />
     </data>
 
     <FrameLayout
@@ -14,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Hello" />
+            android:text="@{viewModel.response}" />
 
     </FrameLayout>
 </layout>
