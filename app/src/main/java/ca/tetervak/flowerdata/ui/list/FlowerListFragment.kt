@@ -25,7 +25,6 @@ class FlowerListFragment : Fragment() {
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
 
-
         return binding.root
     }
 

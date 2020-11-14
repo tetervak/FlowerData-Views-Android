@@ -3,7 +3,10 @@ package ca.tetervak.flowerdata.ui.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import ca.tetervak.flowerdata.network.Flower
 import ca.tetervak.flowerdata.network.FlowerDataApi
+import kotlinx.coroutines.launch
 import retrofit2.Call
 
 import retrofit2.Callback
@@ -12,10 +15,10 @@ import retrofit2.Response
 class FlowerListViewModel : ViewModel() {
 
     // The internal MutableLiveData String that stores the most recent response
-    private val _response = MutableLiveData<String>()
+    private val _flowers = MutableLiveData<List<Flower>>()
 
     // The external immutable LiveData for the response String
-    val response: LiveData<String> = _response
+    val flowers: LiveData<List<Flower>> = _flowers
 
     /**
      * Call getMarsRealEstateProperties() on init so we can display status immediately.
@@ -29,18 +32,14 @@ class FlowerListViewModel : ViewModel() {
      */
     private fun getFlowers() {
 
-        _response.value = "Set the Mars API Response here!"
-
-        FlowerDataApi.retrofitService.getFlowers().enqueue(
-            object: Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    _response.value = response.body()
-                }
-
-                override fun onFailure(call: Call<String>, t: Throwable) {
-                    _response.value = "Failure: " + t.message
-                }
-        })
+        viewModelScope.launch {
+            try {
+                val catalog = FlowerDataApi.retrofitService.getCatalog()
+                _flowers.value = catalog.flowers
+            } catch (e: Exception) {
+                //_flowers.value = "Failure: ${e.message}"
+            }
+        }
 
     }
     
