@@ -1,35 +1,28 @@
 package ca.tetervak.flowerdata.ui.list
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import ca.tetervak.flowerdata.network.FlowerJson
+import androidx.lifecycle.*
+import ca.tetervak.flowerdata.domain.Flower
 import ca.tetervak.flowerdata.network.FlowerDataApi
-import kotlinx.coroutines.launch
+import androidx.lifecycle.liveData
+import ca.tetervak.flowerdata.network.FlowerJson
 
 class FlowerListViewModel : ViewModel() {
 
-    // The internal MutableLiveData String that stores the most recent response
-    private val _flowers = MutableLiveData<List<FlowerJson>>()
+    private var flowerListData: LiveData<List<Flower>>? = null
 
-    // The external immutable LiveData for the response String
-    val flowers: LiveData<List<FlowerJson>> = _flowers
-
-    init {
-        getFlowers()
-    }
-
-    private fun getFlowers() {
-
-        viewModelScope.launch {
-            try {
-                val catalog = FlowerDataApi.retrofitService.getCatalog()
-                _flowers.value = catalog.flowers
-            } catch (e: Exception) {
-                Log.e("NETWORK","Failure: ${e.message}")
+    fun getFlowers(): LiveData<List<Flower>> {
+        return flowerListData ?: liveData {
+            val catalog = FlowerDataApi.retrofitService.getCatalog()
+            val flowers = catalog.flowers.mapIndexed { index, flowerJson ->
+                flowerJson.asFlower(index)
             }
+            emit(flowers)
+        }.also {
+            flowerListData = it
         }
     }
+}
+
+fun FlowerJson.asFlower(index: Int): Flower{
+    return Flower(label, text, pictures.large, index.toLong())
 }

@@ -9,4 +9,7 @@
     <string name="about">About</string>
     <string name="author">Alex Tetervak, Sheridan College, 2020</string>
 
+    <!-- the list fragment -->
+    <string name="count">%1$d.</string>
+
 </resources>

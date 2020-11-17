@@ -46,8 +46,10 @@ dependencies {
     // Constraint Layout
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    // ViewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    // ViewModel and LiveData
+    //implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
     // ??? What for?
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'

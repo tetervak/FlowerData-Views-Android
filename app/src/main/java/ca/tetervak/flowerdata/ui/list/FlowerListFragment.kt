@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 
 import ca.tetervak.flowerdata.databinding.FlowerListFragmentBinding
 
@@ -19,11 +20,14 @@ class FlowerListFragment : Fragment() {
     ): View? {
         val binding = FlowerListFragmentBinding.inflate(inflater)
 
-        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.lifecycleOwner = viewLifecycleOwner
+        val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        binding.recyclerView.addItemDecoration(divider)
+        val adapter = FlowerListAdapter()
+        binding.recyclerView.adapter = adapter
 
-        // Giving the binding access to the OverviewViewModel
-        binding.viewModel = viewModel
+        viewModel.getFlowers().observe(viewLifecycleOwner){
+            adapter.submitList(it)
+        }
 
         return binding.root
     }
