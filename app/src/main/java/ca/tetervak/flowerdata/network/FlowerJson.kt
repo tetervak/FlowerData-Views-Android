@@ -1,7 +1,7 @@
 package ca.tetervak.flowerdata.network
 
-data class Flower(
+data class FlowerJson(
     val name: String,
     val label: String,
     val text: String,
-    val pictures: Pictures)
+    val pictures: PicturesJson)

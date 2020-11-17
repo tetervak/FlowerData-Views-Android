@@ -9,9 +9,4 @@
         android:name="ca.tetervak.flowerdata.ui.list.FlowerListFragment"
         android:label="FlowerListFragment"
         tools:layout="@layout/flower_list_fragment"/>
-    <fragment
-        android:id="@+id/flowerDetailFragment"
-        android:name="ca.tetervak.flowerdata.ui.detail.FlowerDetailFragment"
-        android:label="FlowerDetailFragment"
-        tools:layout="@layout/flower_detail_fragment"/>
 </navigation>

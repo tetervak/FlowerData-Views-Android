@@ -5,21 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ca.tetervak.flowerdata.network.Flower
+import ca.tetervak.flowerdata.network.FlowerJson
 import ca.tetervak.flowerdata.network.FlowerDataApi
 import kotlinx.coroutines.launch
-import retrofit2.Call
-
-import retrofit2.Callback
-import retrofit2.Response
 
 class FlowerListViewModel : ViewModel() {
 
     // The internal MutableLiveData String that stores the most recent response
-    private val _flowers = MutableLiveData<List<Flower>>()
+    private val _flowers = MutableLiveData<List<FlowerJson>>()
 
     // The external immutable LiveData for the response String
-    val flowers: LiveData<List<Flower>> = _flowers
+    val flowers: LiveData<List<FlowerJson>> = _flowers
 
     init {
         getFlowers()
