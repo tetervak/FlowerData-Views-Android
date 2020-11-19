@@ -14,8 +14,7 @@ class FlowerListAdapter (): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(Fl
     class ViewHolder private constructor(private val binding: FlowerListItemBinding
     ): RecyclerView.ViewHolder(binding.root){
 
-        fun bind(count: Int, flower: Flower){
-            binding.count.text = binding.root.context.getString(R.string.count, count)
+        fun bind(flower: Flower){
             binding.flower = flower
             binding.executePendingBindings()
         }
@@ -35,7 +34,7 @@ class FlowerListAdapter (): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(Fl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(position + 1, getItem(position))
+        holder.bind(getItem(position))
     }
 
     class FlowerDiffCallback : DiffUtil.ItemCallback<Flower>() {

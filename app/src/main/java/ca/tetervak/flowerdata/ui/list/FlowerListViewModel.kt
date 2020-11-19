@@ -5,6 +5,7 @@ import ca.tetervak.flowerdata.domain.Flower
 import ca.tetervak.flowerdata.network.FlowerDataApi
 import androidx.lifecycle.liveData
 import ca.tetervak.flowerdata.network.FlowerJson
+import ca.tetervak.flowerdata.network.IMAGE_FOLDER_URL
 
 class FlowerListViewModel : ViewModel() {
 
@@ -24,5 +25,6 @@ class FlowerListViewModel : ViewModel() {
 }
 
 fun FlowerJson.asFlower(index: Int): Flower{
-    return Flower(label, text, pictures.large, index.toLong())
+    return Flower(
+            label, price, text, IMAGE_FOLDER_URL + pictures.large, index.toLong())
 }

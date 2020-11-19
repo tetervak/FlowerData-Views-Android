@@ -10,6 +10,6 @@
     <string name="author">Alex Tetervak, Sheridan College, 2020</string>
 
     <!-- the list fragment -->
-    <string name="count">%1$d.</string>
+    <string name="flower_image">flower image</string>
 
 </resources>

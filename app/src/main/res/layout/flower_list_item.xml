@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -12,23 +13,37 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="@dimen/double_margin"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginBottom="@dimen/margin"
-            android:textAppearance="?attr/textAppearanceListItem"
-            tools:text="1." />
+            app:imageUrl="@{flower.imageUrl}"
+            tools:src="@drawable/aster"
+            android:contentDescription="@string/flower_image" />
 
         <TextView
             android:id="@+id/flower_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin"
-            android:textAppearance="?attr/textAppearanceListItem"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
             android:text="@{flower.label}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#4A148C"
             tools:text="Aster" />
+
+        <TextView
+            android:id="@+id/flower_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:text="@{flower.price}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#2E7D32"
+            tools:text="$2.25" />
+
     </LinearLayout>
 </layout>
