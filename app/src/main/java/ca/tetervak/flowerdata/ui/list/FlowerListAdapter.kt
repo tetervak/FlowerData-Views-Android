@@ -17,6 +17,7 @@ class FlowerListAdapter (): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(Fl
         fun bind(count: Int, flower: Flower){
             binding.count.text = binding.root.context.getString(R.string.count, count)
             binding.flower = flower
+            binding.executePendingBindings()
         }
 
         companion object {
