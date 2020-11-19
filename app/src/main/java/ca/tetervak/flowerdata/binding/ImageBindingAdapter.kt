@@ -1,7 +1,6 @@
 package ca.tetervak.flowerdata.binding
 
 import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import ca.tetervak.flowerdata.R
 import com.bumptech.glide.Glide

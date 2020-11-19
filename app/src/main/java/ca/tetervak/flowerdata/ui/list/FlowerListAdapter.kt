@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import ca.tetervak.flowerdata.R
 import ca.tetervak.flowerdata.databinding.FlowerListItemBinding
 import ca.tetervak.flowerdata.domain.Flower
 
