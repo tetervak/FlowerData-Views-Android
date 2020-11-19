@@ -12,10 +12,9 @@ import com.bumptech.glide.request.RequestOptions
  */
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
-    imgUrl?.let {
-        val imgUri = imgUrl.toUri().buildUpon().build()
+    if(imgUrl is String){
         Glide.with(imgView.context)
-                .load(imgUri)
+                .load(imgUrl)
                 .apply(RequestOptions()
                         .placeholder(R.drawable.loading_animation)
                         .error(R.drawable.ic_broken_image))
