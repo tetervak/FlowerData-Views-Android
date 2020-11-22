@@ -22,12 +22,10 @@ class FlowerListFragment : Fragment() {
 
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.recyclerView.addItemDecoration(divider)
-        val adapter = FlowerListAdapter()
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = FlowerListAdapter()
 
-        viewModel.getFlowers().observe(viewLifecycleOwner){
-            adapter.submitList(it)
-        }
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
 
         return binding.root
     }

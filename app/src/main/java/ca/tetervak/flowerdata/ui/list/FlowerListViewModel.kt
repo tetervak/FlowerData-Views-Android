@@ -9,9 +9,12 @@ import ca.tetervak.flowerdata.network.IMAGE_FOLDER_URL
 
 class FlowerListViewModel : ViewModel() {
 
+    val flowerList: LiveData<List<Flower>>
+        get() = getFlowers()
+
     private var flowerListData: LiveData<List<Flower>>? = null
 
-    fun getFlowers(): LiveData<List<Flower>> {
+    private fun getFlowers(): LiveData<List<Flower>> {
         return flowerListData ?: liveData {
             val catalog = FlowerDataApi.retrofitService.getCatalog()
             val flowers = catalog.flowers.mapIndexed { index, flowerJson ->
