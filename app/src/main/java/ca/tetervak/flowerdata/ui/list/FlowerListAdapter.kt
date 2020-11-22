@@ -8,28 +8,25 @@ import androidx.recyclerview.widget.RecyclerView
 import ca.tetervak.flowerdata.databinding.FlowerListItemBinding
 import ca.tetervak.flowerdata.domain.Flower
 
-class FlowerListAdapter (): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(FlowerDiffCallback()){
+class FlowerListAdapter (
+    private val onClick: (Flower) -> Unit
+): ListAdapter<Flower, FlowerListAdapter.ViewHolder>(FlowerDiffCallback()){
 
-    class ViewHolder private constructor(private val binding: FlowerListItemBinding
+    inner class ViewHolder(
+        private val binding: FlowerListItemBinding
     ): RecyclerView.ViewHolder(binding.root){
 
         fun bind(flower: Flower){
             binding.flower = flower
+            binding.root.setOnClickListener{ onClick(flower) }
             binding.executePendingBindings()
         }
-
-        companion object {
-            fun from(parent: ViewGroup): ViewHolder {
-                val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = FlowerListItemBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding)
-            }
-        }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = FlowerListItemBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

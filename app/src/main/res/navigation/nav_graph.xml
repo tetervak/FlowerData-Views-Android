@@ -8,5 +8,18 @@
         android:id="@+id/flowerListFragment"
         android:name="ca.tetervak.flowerdata.ui.list.FlowerListFragment"
         android:label="FlowerListFragment"
-        tools:layout="@layout/flower_list_fragment"/>
+        tools:layout="@layout/flower_list_fragment">
+        <action
+            android:id="@+id/action_list_to_details"
+            app:destination="@id/flowerDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flowerDetailsFragment"
+        android:name="ca.tetervak.flowerdata.ui.details.FlowerDetailsFragment"
+        android:label="FlowerDetailsFragment"
+        tools:layout="@layout/flower_details_fragment">
+        <argument
+            android:name="flowerId"
+            app:argType="long" />
+    </fragment>
 </navigation>

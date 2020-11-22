@@ -4,5 +4,6 @@ import androidx.lifecycle.LiveData
 import ca.tetervak.flowerdata.domain.Flower
 
 interface FlowerRepository {
-    fun getFlowers(): LiveData<List<Flower>>
+    fun getAll(): LiveData<List<Flower>>
+    fun get(id: Long): LiveData<Flower>
 }
