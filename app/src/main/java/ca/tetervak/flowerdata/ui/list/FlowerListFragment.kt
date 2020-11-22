@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 
 import ca.tetervak.flowerdata.databinding.FlowerListFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FlowerListFragment : Fragment() {
 
     private val viewModel: FlowerListViewModel by viewModels()
