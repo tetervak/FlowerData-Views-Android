@@ -1,21 +1,19 @@
 package ca.tetervak.flowerdata.ui.details
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import ca.tetervak.flowerdata.domain.Flower
 import ca.tetervak.flowerdata.repository.FlowerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class FlowerDetailsViewModel @Inject constructor(repository: FlowerRepository): ViewModel() {
+class FlowerDetailsViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
+    repository: FlowerRepository
+): ViewModel() {
 
-    private var _flowerId = MutableLiveData<Long>()
+    private val flowerId: Long = savedStateHandle["flowerId"] ?:
+        throw IllegalArgumentException("missing flower id")
 
-    val flower: LiveData<Flower> =
-        Transformations.switchMap(_flowerId){ repository.get(it) }
-
-    fun loadData(envelopeId: Long){ _flowerId.value = envelopeId }
+    val flower: LiveData<Flower> = repository.get(flowerId)
 }

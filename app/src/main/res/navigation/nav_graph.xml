@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/flowerListFragment"
         android:name="ca.tetervak.flowerdata.ui.list.FlowerListFragment"
-        android:label="FlowerListFragment"
+        android:label="@string/list"
         tools:layout="@layout/flower_list_fragment">
         <action
             android:id="@+id/action_list_to_details"
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/flowerDetailsFragment"
         android:name="ca.tetervak.flowerdata.ui.details.FlowerDetailsFragment"
-        android:label="FlowerDetailsFragment"
+        android:label="@string/details"
         tools:layout="@layout/flower_details_fragment">
         <argument
             android:name="flowerId"

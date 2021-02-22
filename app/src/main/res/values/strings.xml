@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
 
     <!-- floating label -->
-    <string name="sheridan">Sheridan, 2020</string>
+    <string name="sheridan">Sheridan, 2021</string>
 
     <!-- about dialog -->
     <string name="about">About</string>
@@ -11,5 +11,9 @@
 
     <!-- the list fragment -->
     <string name="flower_image">flower image</string>
+
+    <!-- fragment navigation labels -->
+    <string name="list">List</string>
+    <string name="details">Details</string>
 
 </resources>

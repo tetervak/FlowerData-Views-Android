@@ -14,20 +14,17 @@ import dagger.hilt.android.AndroidEntryPoint
 class FlowerDetailsFragment : Fragment() {
 
     private val viewModel: FlowerDetailsViewModel by viewModels()
-    private val safeArgs: FlowerDetailsFragmentArgs by navArgs()
+    //private val safeArgs: FlowerDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FlowerDetailsFragmentBinding.inflate(inflater)
 
-        viewModel.loadData(safeArgs.flowerId)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
         return binding.root
     }
-
-
 }
