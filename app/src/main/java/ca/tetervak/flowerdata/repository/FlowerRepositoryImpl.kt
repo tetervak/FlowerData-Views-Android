@@ -23,7 +23,9 @@ class FlowerRepositoryImpl @Inject constructor(): FlowerRepository {
     override fun getAll(): LiveData<List<Flower>> = flowerListData
 
     override fun get(id: Long): LiveData<Flower> =
-        Transformations.map(flowerListData) { it[id.toInt()] }
+        Transformations.map(flowerListData) {
+            it[id.toInt()]
+        }
 
 }
 

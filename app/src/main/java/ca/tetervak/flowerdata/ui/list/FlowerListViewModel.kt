@@ -10,7 +10,5 @@ import javax.inject.Inject
 class FlowerListViewModel @Inject constructor(
     repository: FlowerRepository
 ) : ViewModel() {
-
     val flowerList: LiveData<List<Flower>> = repository.getAll()
-
 }
