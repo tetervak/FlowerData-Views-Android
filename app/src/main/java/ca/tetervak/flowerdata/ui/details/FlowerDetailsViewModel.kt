@@ -1,14 +1,16 @@
 package ca.tetervak.flowerdata.ui.details
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import ca.tetervak.flowerdata.domain.Flower
 import ca.tetervak.flowerdata.repository.FlowerRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FlowerDetailsViewModel @ViewModelInject constructor(repository: FlowerRepository): ViewModel() {
+@HiltViewModel
+class FlowerDetailsViewModel @Inject constructor(repository: FlowerRepository): ViewModel() {
 
     private var _flowerId = MutableLiveData<Long>()
 

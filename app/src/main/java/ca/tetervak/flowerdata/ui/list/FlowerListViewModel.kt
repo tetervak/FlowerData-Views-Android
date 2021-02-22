@@ -1,11 +1,13 @@
 package ca.tetervak.flowerdata.ui.list
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import ca.tetervak.flowerdata.domain.Flower
 import ca.tetervak.flowerdata.repository.FlowerRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FlowerListViewModel @ViewModelInject constructor(
+@HiltViewModel
+class FlowerListViewModel @Inject constructor(
         private val repository: FlowerRepository
 ) : ViewModel() {
 
