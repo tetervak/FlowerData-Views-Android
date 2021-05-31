@@ -8,9 +8,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FlowerListViewModel @Inject constructor(
-        private val repository: FlowerRepository
+    repository: FlowerRepository
 ) : ViewModel() {
-
     val flowerList: LiveData<List<Flower>> = repository.getAll()
-
 }

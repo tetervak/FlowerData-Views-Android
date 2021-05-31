@@ -19,7 +19,7 @@
             android:layout_marginStart="@dimen/double_margin"
             android:layout_marginTop="@dimen/margin"
             android:layout_marginBottom="@dimen/margin"
-            app:imageUrl="@{flower.imageUrl}"
+            imageUrl="@{flower.imageUrl}"
             tools:src="@drawable/aster"
             android:contentDescription="@string/flower_image" />
 

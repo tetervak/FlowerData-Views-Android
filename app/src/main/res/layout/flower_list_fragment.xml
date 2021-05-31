@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="LinearLayoutManager"
-            app:listData="@{viewModel.flowerList}"
+            listData="@{viewModel.flowerList}"
             tools:listitem="@layout/flower_list_item" />
 
     </FrameLayout>
