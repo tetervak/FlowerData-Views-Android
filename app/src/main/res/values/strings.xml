@@ -5,15 +5,22 @@
     <!-- floating label -->
     <string name="sheridan">Sheridan, 2021</string>
 
+    <!-- menu items -->
+    <string name="search_price">Search Price</string>
+
     <!-- about dialog -->
     <string name="about">About</string>
     <string name="author">Alex Tetervak, Sheridan College, 2020</string>
 
     <!-- the list fragment -->
     <string name="flower_image">flower image</string>
-
-    <!-- fragment navigation labels -->
     <string name="list">List</string>
+
+    <!-- details fragment -->
     <string name="details">Details</string>
+
+    <!-- search price fragment -->
+    <string name="find_price_less_than">Find price less than</string>
+    <string name="find_price">Find Price</string>
 
 </resources>

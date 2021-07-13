@@ -51,6 +51,10 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.action_global_to_about)
                 true
             }
+            R.id.action_search_price -> {
+                navController.navigate(R.id.action_global_to_search_price)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

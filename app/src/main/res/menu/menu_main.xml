@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.tetervak.flowerdata.MainActivity">
     <item
+        android:id="@+id/action_search_price"
+        android:title="@string/search_price"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_about"
         android:title="@string/about"
         app:showAsAction="never" />

@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/flowerListFragment">
+    <dialog
+        android:id="@+id/aboutDialog"
+        android:name="ca.tetervak.flowerdata.ui.dialogs.AboutDialog"
+        android:label="AboutDialog" />
     <fragment
         android:id="@+id/flowerListFragment"
         android:name="ca.tetervak.flowerdata.ui.list.FlowerListFragment"
@@ -22,9 +26,15 @@
             android:name="flowerId"
             app:argType="long" />
     </fragment>
-    <dialog
-        android:id="@+id/aboutDialog"
-        android:name="ca.tetervak.flowerdata.ui.dialogs.AboutDialog"
-        android:label="AboutDialog" />
     <action android:id="@+id/action_global_to_about" app:destination="@id/aboutDialog" />
+    <fragment
+        android:id="@+id/searchPriceFragment"
+        android:name="ca.tetervak.flowerdata.ui.list.SearchPriceFragment"
+        android:label="@string/find_price"
+        tools:layout="@layout/search_price_fragment" >
+        <action
+            android:id="@+id/action_search_price_to_details"
+            app:destination="@id/flowerDetailsFragment" />
+    </fragment>
+    <action android:id="@+id/action_global_to_search_price" app:destination="@id/searchPriceFragment" />
 </navigation>
