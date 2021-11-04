@@ -1,26 +1,30 @@
 <resources>
     <string name="app_name">Flower Data</string>
-    <string name="action_settings">Settings</string>
 
     <!-- floating label -->
     <string name="sheridan">Sheridan, 2021</string>
 
     <!-- menu items -->
-    <string name="search_price">Search Price</string>
+    <string name="action_search">Search</string>
+    <string name="action_about">About</string>
 
     <!-- about dialog -->
-    <string name="about">About</string>
-    <string name="author">Alex Tetervak, Sheridan College, 2020</string>
+    <string name="author">Alex Tetervak, Sheridan College, 2021</string>
 
     <!-- the list fragment -->
     <string name="flower_image">flower image</string>
     <string name="list">List</string>
 
     <!-- details fragment -->
-    <string name="details">Details</string>
+    <string name="fragment_details">Details</string>
 
     <!-- search price fragment -->
     <string name="find_price_less_than">Find price less than</string>
     <string name="find_price">Find Price</string>
+
+    <!-- navigation labels -->
+    <string name="fragment_catalog">Catalog</string>
+    <string name="fragment_search">Search</string>
+    <string name="fragment_about">About</string>
 
 </resources>

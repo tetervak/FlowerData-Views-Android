@@ -5,5 +5,5 @@ import ca.tetervak.flowerdata.domain.Flower
 
 interface FlowerRepository {
     fun getAll(): LiveData<List<Flower>>
-    fun get(id: Long): LiveData<Flower>
+    fun get(id: Int): LiveData<Flower>
 }

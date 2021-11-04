@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 navController.navigate(R.id.action_global_to_about)
                 true
             }
-            R.id.action_search_price -> {
+            R.id.action_search -> {
                 navController.navigate(R.id.action_global_to_search_price)
                 true
             }

@@ -1,4 +1,4 @@
-package ca.tetervak.flowerdata.ui.list
+package ca.tetervak.flowerdata.ui.list.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,27 +11,28 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.flowerdata.R
-import ca.tetervak.flowerdata.databinding.SearchPriceFragmentBinding
+import ca.tetervak.flowerdata.databinding.SearchFragmentBinding
+import ca.tetervak.flowerdata.ui.list.FlowerListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SearchPriceFragment: Fragment()  {
+class SearchFragment: Fragment()  {
 
-    private val viewModel: SearchPriceViewModel by viewModels()
+    private val viewModel: SearchViewModel by viewModels()
     private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = SearchPriceFragmentBinding.inflate(inflater)
+        val binding = SearchFragmentBinding.inflate(inflater)
 
         navController = findNavController()
 
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.recyclerView.addItemDecoration(divider)
-        binding.recyclerView.adapter = FlowerListAdapter {
-            val action = SearchPriceFragmentDirections.actionSearchPriceToDetails(it.id)
+        binding.recyclerView.adapter = FlowerListAdapter { flower ->
+            val action = SearchFragmentDirections.actionSearchToDetails(flower.id)
             navController.navigate(action)
         }
 
@@ -42,7 +43,7 @@ class SearchPriceFragment: Fragment()  {
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
-                val margins =resources.getIntArray(R.array.price_margin_values)
+                val margins = resources.getIntArray(R.array.price_margin_values)
                 viewModel.setPriceMargin(margins[position].toFloat())
             }
 

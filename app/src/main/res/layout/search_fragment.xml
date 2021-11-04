@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="ca.tetervak.flowerdata.ui.list.SearchPriceViewModel"/>
+        <import type="ca.tetervak.flowerdata.ui.list.search.SearchViewModel"/>
         <variable
             name="viewModel"
-            type="ca.tetervak.flowerdata.ui.list.SearchPriceViewModel" />
+            type="ca.tetervak.flowerdata.ui.list.search.SearchViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".ui.list.SearchPriceFragment">
+        tools:context=".ui.list.search.SearchFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

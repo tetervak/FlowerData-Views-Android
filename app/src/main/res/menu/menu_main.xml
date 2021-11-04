@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.tetervak.flowerdata.MainActivity">
     <item
-        android:id="@+id/action_search_price"
-        android:title="@string/search_price"
+        android:id="@+id/action_search"
+        android:title="@string/action_search"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_about"
-        android:title="@string/about"
+        android:title="@string/action_about"
         app:showAsAction="never" />
 </menu>
