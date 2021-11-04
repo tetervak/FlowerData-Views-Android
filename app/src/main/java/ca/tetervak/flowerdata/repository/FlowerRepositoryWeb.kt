@@ -35,5 +35,6 @@ fun FlowerJson.asFlower(index: Int) =
         label,
         price,
         text,
-        IMAGE_FOLDER_URL + pictures.large
+        IMAGE_FOLDER_URL + pictures.large,
+        wiki
     )

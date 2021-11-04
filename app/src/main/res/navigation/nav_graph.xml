@@ -21,6 +21,9 @@
         <argument
             android:name="flowerId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_details_to_wiki"
+            app:destination="@id/nav_wiki" />
     </fragment>
     <fragment
         android:id="@+id/nav_search"
@@ -30,5 +33,14 @@
         <action
             android:id="@+id/action_search_to_details"
             app:destination="@id/nav_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_wiki"
+        android:name="ca.tetervak.flowerdata.ui.wikipedia.WikiFragment"
+        android:label="@string/fragment_wiki"
+        tools:layout="@layout/wiki_fragment" >
+        <argument
+            android:name="flowerId"
+            app:argType="integer" />
     </fragment>
 </navigation>

@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/FlowerData/app/src/main/res/layout/content_main.xml" value="0.1359375" />
+        <entry key="..\:/Android/FlowerData/app/src/main/res/layout/flower_details_fragment.xml" value="0.23385416666666667" />
+        <entry key="..\:/Android/FlowerData/app/src/main/res/layout/wiki_fragment.xml" value="0.2064814814814815" />
       </map>
     </option>
   </component>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ca.tetervak.flowerdata.databinding.FlowerDetailsFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FlowerDetailsFragment : Fragment() {
 
     private val viewModel: FlowerDetailsViewModel by viewModels()
-    //private val safeArgs: FlowerDetailsFragmentArgs by navArgs()
+    private val safeArgs: FlowerDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +25,12 @@ class FlowerDetailsFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+
+        binding.wikiLink.setOnClickListener {
+            findNavController().navigate(
+                FlowerDetailsFragmentDirections.actionDetailsToWiki(safeArgs.flowerId)
+            )
+        }
 
         return binding.root
     }
