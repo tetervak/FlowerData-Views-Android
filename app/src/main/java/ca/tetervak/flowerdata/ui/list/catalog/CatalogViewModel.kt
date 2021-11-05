@@ -20,4 +20,10 @@ class CatalogViewModel @Inject constructor(
             repository.refresh()
         }
     }
+
+    fun clear(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.clear()
+        }
+    }
 }

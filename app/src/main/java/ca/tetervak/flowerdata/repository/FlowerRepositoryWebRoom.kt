@@ -35,6 +35,10 @@ class FlowerRepositoryWebRoom @Inject constructor(
             }
         flowerDao.insert(entityList)
     }
+
+    override suspend fun clear() {
+        flowerDao.deleteAll()
+    }
 }
 
 fun FlowerEntity.asFlower() =

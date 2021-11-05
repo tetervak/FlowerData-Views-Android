@@ -55,6 +55,10 @@ class CatalogFragment : Fragment() {
                 viewModel.refresh()
                 true
             }
+            R.id.action_clear ->{
+                viewModel.clear()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
