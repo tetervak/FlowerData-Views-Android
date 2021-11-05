@@ -19,11 +19,6 @@ class SearchFragment: Fragment()  {
     private val viewModel: SearchViewModel by viewModels()
     private lateinit var navController: NavController
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,21 +50,6 @@ class SearchFragment: Fragment()  {
         }
 
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_list, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_refresh -> {
-                viewModel.refresh()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
 }

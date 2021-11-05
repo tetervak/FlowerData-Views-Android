@@ -46,7 +46,7 @@ class CatalogFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_list, menu)
+        inflater.inflate(R.menu.catalog, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

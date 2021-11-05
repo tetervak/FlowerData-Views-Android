@@ -27,11 +27,4 @@ class SearchViewModel @Inject constructor(
                 }
             }
         }
-
-    fun refresh(){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.refresh()
-        }
-    }
-
 }
