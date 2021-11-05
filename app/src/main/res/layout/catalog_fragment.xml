@@ -10,10 +10,11 @@
             type="ca.tetervak.flowerdata.ui.list.catalog.CatalogViewModel" />
     </data>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.list.catalog.CatalogFragment">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.list.catalog.CatalogFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -23,5 +24,6 @@
             listData="@{viewModel.flowerList}"
             tools:listitem="@layout/flower_list_item" />
 
-    </FrameLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </layout>
