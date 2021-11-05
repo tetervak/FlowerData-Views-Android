@@ -4,6 +4,8 @@ import androidx.lifecycle.*
 import ca.tetervak.flowerdata.domain.Flower
 import ca.tetervak.flowerdata.repository.FlowerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,6 +28,10 @@ class SearchViewModel @Inject constructor(
             }
         }
 
-
+    fun refresh(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.refresh()
+        }
+    }
 
 }

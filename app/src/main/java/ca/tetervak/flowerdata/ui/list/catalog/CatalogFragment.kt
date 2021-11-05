@@ -1,14 +1,13 @@
 package ca.tetervak.flowerdata.ui.list.catalog
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
+import ca.tetervak.flowerdata.R
 import ca.tetervak.flowerdata.databinding.CatalogFragmentBinding
 import ca.tetervak.flowerdata.ui.list.FlowerListAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,6 +17,11 @@ class CatalogFragment : Fragment() {
 
     private val viewModel: CatalogViewModel by viewModels()
     private lateinit var navController: NavController
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,5 +44,19 @@ class CatalogFragment : Fragment() {
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_list, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_refresh -> {
+                viewModel.refresh()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
 }

@@ -27,6 +27,10 @@ class FlowerRepositoryWeb @Inject constructor() : FlowerRepository {
     override fun get(id: Int): LiveData<Flower> =
         flowerListData.map { list -> list[id] }
 
+    override suspend fun refresh() {
+
+    }
+
 }
 
 fun FlowerJson.asFlower(index: Int) =
