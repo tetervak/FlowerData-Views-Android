@@ -22,7 +22,7 @@ class FlowerRepositoryWebRoom @Inject constructor(
             }
         }
 
-    override fun get(id: Int): LiveData<Flower> =
+    override fun get(id: String): LiveData<Flower> =
         flowerDao.get(id).map { entity ->
             entity.asFlower()
         }
@@ -50,7 +50,7 @@ fun FlowerEntity.asFlower() =
 
 fun FlowerJson.asEntity() =
     FlowerEntity(
-        id = 0,
+        id = id,
         label = label,
         price = price.substring(1).toFloat(),
         text = text,

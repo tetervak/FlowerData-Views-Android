@@ -3,6 +3,7 @@ package ca.tetervak.flowerdata.database
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
@@ -12,9 +13,9 @@ interface FlowerDao {
     fun getAll(): LiveData<List<FlowerEntity>>
 
     @Query("SELECT * FROM flowers WHERE id = :id")
-    fun get(id: Int): LiveData<FlowerEntity>
+    fun get(id: String): LiveData<FlowerEntity>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(list: List<FlowerEntity>)
 
     @Query("DELETE FROM flowers")

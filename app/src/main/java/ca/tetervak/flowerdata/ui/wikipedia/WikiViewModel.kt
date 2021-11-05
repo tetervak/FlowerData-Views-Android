@@ -14,7 +14,7 @@ class WikiViewModel @Inject constructor(
     repository: FlowerRepository
 ): ViewModel() {
 
-    private val flowerId: Int = savedStateHandle["flowerId"] ?:
+    private val flowerId: String = savedStateHandle["flowerId"] ?:
     throw IllegalArgumentException("missing flower id")
 
     val flower: LiveData<Flower> = repository.get(flowerId)
