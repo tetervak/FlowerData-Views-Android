@@ -45,7 +45,7 @@ fun FlowerEntity.asFlower() =
     Flower(
         id = id,
         label = label,
-        price = "$$price",
+        price = price,
         text = text,
         imageUrl = IMAGE_FOLDER_URL + imageFile,
         wikiUrl = wikiUrl
