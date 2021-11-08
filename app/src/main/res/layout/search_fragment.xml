@@ -28,7 +28,7 @@
                 android:layout_marginStart="@dimen/double_margin"
                 android:layout_marginTop="@dimen/margin"
                 android:layout_marginBottom="@dimen/margin"
-                android:text="@string/find_price_less_than"
+                android:text="@string/find_cheaper_than"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/orange_500" />
 

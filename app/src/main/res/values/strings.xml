@@ -20,9 +20,9 @@
     <!-- details fragment -->
     <string name="wiki_link">Wikipedia</string>
 
-    <!-- search price fragment -->
-    <string name="find_price_less_than">Find price less than</string>
-    <string name="find_price">Find Price</string>
+    <!-- search fragment -->
+    <string name="find_cheaper_than">Find cheaper than</string>
+   <!-- <string name="find_price">Find Price</string>-->
 
     <!-- navigation labels -->
     <string name="fragment_details">Details</string>
