@@ -71,6 +71,9 @@ dependencies {
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.3.0"
 
+    // WorkManager dependency
+    implementation "android.arch.work:work-runtime-ktx:1.0.1"
+
     // Testing
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
