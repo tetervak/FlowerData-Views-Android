@@ -30,7 +30,8 @@
                 android:layout_marginBottom="@dimen/margin"
                 android:text="@string/find_cheaper_than"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/orange_500" />
+                android:textColor="@color/orange_500"
+                tools:ignore="TextContrastCheck" />
 
             <Spinner
                 android:id="@+id/price_margin_spinner"
@@ -39,7 +40,8 @@
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_marginTop="@dimen/margin"
                 android:layout_marginBottom="@dimen/margin"
-                android:entries="@array/price_margin_labels" />
+                android:entries="@array/price_margin_labels"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
 
