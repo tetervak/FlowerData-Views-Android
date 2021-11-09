@@ -7,6 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,7 +17,7 @@ class CatalogViewModel @Inject constructor(
 
     val flowerList: LiveData<List<Flower>> = repository.getAll()
 
-    enum class Status { STARTED, REFRESHING, LOADED }
+    enum class Status { STARTED, REFRESHING, LOADED, ERROR }
     private val _status = MutableLiveData(Status.STARTED)
     val status: LiveData<Status> = _status
 
@@ -24,8 +25,12 @@ class CatalogViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO){
             _status.postValue(Status.REFRESHING)
             delay(1500) // fake delay
-            repository.refresh()
-            _status.postValue(Status.LOADED)
+            try{
+                repository.refresh()
+                _status.postValue(Status.LOADED)
+            }catch(error: IOException){
+                _status.postValue(Status.ERROR)
+            }
         }
     }
 
