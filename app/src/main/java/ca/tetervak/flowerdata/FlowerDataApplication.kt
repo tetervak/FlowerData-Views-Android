@@ -1,12 +1,10 @@
 package ca.tetervak.flowerdata
 
 import android.app.Application
-import android.os.Build
 import androidx.hilt.work.HiltWorkerFactory
 import androidx.work.*
-import ca.tetervak.flowerdata.workmanager.RefreshWorker
+import ca.tetervak.flowerdata.workmanager.setupRefreshWork
 import dagger.hilt.android.HiltAndroidApp
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltAndroidApp
@@ -23,23 +21,7 @@ class FlowerDataApplication: Application(), Configuration.Provider {
 
     override fun onCreate() {
         super.onCreate()
-
-        val constraints = Constraints.Builder()
-            .setRequiredNetworkType(NetworkType.UNMETERED)
-            .setRequiresCharging(false)
-            .setRequiresBatteryNotLow(true)
-            .build()
-
-        val repeatingRequest = PeriodicWorkRequestBuilder<RefreshWorker>(15, TimeUnit.MINUTES)
-            .setConstraints(constraints)
-            .build()
-
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            RefreshWorker.WORK_NAME,
-            ExistingPeriodicWorkPolicy.KEEP,
-            repeatingRequest)
-
+        setupRefreshWork(this)
     }
-
 
 }
