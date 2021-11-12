@@ -37,7 +37,11 @@ class CatalogViewModel @Inject constructor(
     fun clear(){
         viewModelScope.launch(Dispatchers.IO){
             repository.clear()
-            _status.postValue(Status.STARTED)
+            reset()
         }
+    }
+
+    fun reset(){
+        _status.postValue(Status.STARTED)
     }
 }

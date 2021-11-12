@@ -57,6 +57,7 @@ class CatalogFragment : Fragment() {
                         title = getString(R.string.app_name),
                         message = getString(R.string.cannot_load_the_data)
                     )
+                    viewModel.reset()
                 }
             }
         }
