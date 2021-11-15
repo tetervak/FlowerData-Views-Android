@@ -7,7 +7,9 @@ import ca.tetervak.flowerdata.network.CatalogJson
 import ca.tetervak.flowerdata.network.FlowerDataApi
 import ca.tetervak.flowerdata.network.FlowerJson
 import ca.tetervak.flowerdata.network.IMAGE_FOLDER_URL
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -16,11 +18,12 @@ class FlowerRepositoryWebRoom @Inject constructor(
 ) : FlowerRepository {
 
     override fun getAll(): Flow<List<Flower>> =
-        flowerDao.getAll().map { entityList ->
-            entityList.map { entity ->
-                entity.asFlower()
-            }
-        }
+        flowerDao.getAll()
+            .map { entityList ->
+                entityList.map { entity ->
+                    entity.asFlower()
+                }
+            }.flowOn(Dispatchers.IO)
 
     override suspend fun get(id: String): Flower =
         flowerDao.get(id).asFlower()
@@ -48,6 +51,8 @@ fun FlowerEntity.asFlower() =
         imageUrl = IMAGE_FOLDER_URL + imageFile,
         wikiUrl = wikiUrl
     )
+
+
 
 fun FlowerJson.asEntity() =
     FlowerEntity(
