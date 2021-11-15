@@ -15,7 +15,7 @@ class CatalogViewModel @Inject constructor(
     private val repository: FlowerRepository
 ) : ViewModel() {
 
-    val flowerList: LiveData<List<Flower>> = repository.getAll()
+    val flowerList: LiveData<List<Flower>> = repository.getAll().asLiveData()
 
     enum class Status { STARTED, REFRESHING, LOADED, ERROR }
     private val _status = MutableLiveData(Status.STARTED)

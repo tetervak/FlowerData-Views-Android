@@ -1,16 +1,16 @@
 package ca.tetervak.flowerdata.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FlowerDao {
 
     @Query("SELECT * FROM flowers")
-    fun getAll(): LiveData<List<FlowerEntity>>
+    fun getAll(): Flow<List<FlowerEntity>>
 
     @Query("SELECT * FROM flowers WHERE id = :id")
     suspend fun get(id: String): FlowerEntity

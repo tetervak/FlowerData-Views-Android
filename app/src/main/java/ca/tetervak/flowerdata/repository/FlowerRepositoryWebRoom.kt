@@ -1,7 +1,5 @@
 package ca.tetervak.flowerdata.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
 import ca.tetervak.flowerdata.database.FlowerDao
 import ca.tetervak.flowerdata.database.FlowerEntity
 import ca.tetervak.flowerdata.domain.Flower
@@ -9,13 +7,15 @@ import ca.tetervak.flowerdata.network.CatalogJson
 import ca.tetervak.flowerdata.network.FlowerDataApi
 import ca.tetervak.flowerdata.network.FlowerJson
 import ca.tetervak.flowerdata.network.IMAGE_FOLDER_URL
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class FlowerRepositoryWebRoom @Inject constructor(
     private val flowerDao: FlowerDao
 ) : FlowerRepository {
 
-    override fun getAll(): LiveData<List<Flower>> =
+    override fun getAll(): Flow<List<Flower>> =
         flowerDao.getAll().map { entityList ->
             entityList.map { entity ->
                 entity.asFlower()

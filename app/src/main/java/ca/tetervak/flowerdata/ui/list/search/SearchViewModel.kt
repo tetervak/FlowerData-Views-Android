@@ -17,7 +17,7 @@ class SearchViewModel @Inject constructor(
         priceMargin.value = margin
     }
 
-    private val flowerList: LiveData<List<Flower>> = repository.getAll()
+    private val flowerList: LiveData<List<Flower>> = repository.getAll().asLiveData()
     val searchResultList: LiveData<List<Flower>> =
         priceMargin.switchMap { margin ->
             flowerList.map { list -> list.findCheaperThan(margin) }
