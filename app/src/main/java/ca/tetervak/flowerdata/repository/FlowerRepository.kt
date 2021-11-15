@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface FlowerRepository {
     fun getAll(): Flow<List<Flower>>
-    suspend fun get(id: String): Flower
+    fun get(id: String): Flow<Flower>
     suspend fun refresh()
     suspend fun clear()
 }

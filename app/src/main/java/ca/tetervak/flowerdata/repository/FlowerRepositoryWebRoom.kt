@@ -25,8 +25,10 @@ class FlowerRepositoryWebRoom @Inject constructor(
                 }
             }.flowOn(Dispatchers.IO)
 
-    override suspend fun get(id: String): Flower =
-        flowerDao.get(id).asFlower()
+    override fun get(id: String): Flow<Flower> =
+        flowerDao.get(id)
+            .map { entity -> entity.asFlower() }
+            .flowOn(Dispatchers.IO)
 
     override suspend fun refresh() {
         val catalog: CatalogJson = FlowerDataApi.retrofitService.getCatalog()

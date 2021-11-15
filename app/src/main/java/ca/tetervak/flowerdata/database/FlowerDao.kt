@@ -13,7 +13,7 @@ interface FlowerDao {
     fun getAll(): Flow<List<FlowerEntity>>
 
     @Query("SELECT * FROM flowers WHERE id = :id")
-    suspend fun get(id: String): FlowerEntity
+    fun get(id: String): Flow<FlowerEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(list: List<FlowerEntity>)

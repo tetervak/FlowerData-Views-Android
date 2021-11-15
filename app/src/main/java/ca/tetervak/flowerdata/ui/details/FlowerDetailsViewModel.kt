@@ -1,9 +1,6 @@
 package ca.tetervak.flowerdata.ui.details
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import ca.tetervak.flowerdata.domain.Flower
 import ca.tetervak.flowerdata.repository.FlowerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +15,6 @@ class FlowerDetailsViewModel @Inject constructor(
     private val flowerId: String = savedStateHandle["flowerId"] ?:
         throw IllegalArgumentException("missing flower id")
 
-    val flower: LiveData<Flower> = liveData {
-            emit(repository.get(flowerId))
-        }
+    val flower: LiveData<Flower> = repository.get(flowerId).asLiveData()
+
 }
