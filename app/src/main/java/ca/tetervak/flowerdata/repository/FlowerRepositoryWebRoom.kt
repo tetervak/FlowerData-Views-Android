@@ -22,10 +22,8 @@ class FlowerRepositoryWebRoom @Inject constructor(
             }
         }
 
-    override fun get(id: String): LiveData<Flower> =
-        flowerDao.get(id).map { entity ->
-            entity.asFlower()
-        }
+    override suspend fun get(id: String): Flower =
+        flowerDao.get(id).asFlower()
 
     override suspend fun refresh() {
         val catalog: CatalogJson = FlowerDataApi.retrofitService.getCatalog()

@@ -13,7 +13,7 @@ interface FlowerDao {
     fun getAll(): LiveData<List<FlowerEntity>>
 
     @Query("SELECT * FROM flowers WHERE id = :id")
-    fun get(id: String): LiveData<FlowerEntity>
+    suspend fun get(id: String): FlowerEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(list: List<FlowerEntity>)
