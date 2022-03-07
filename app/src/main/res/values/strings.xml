@@ -2,25 +2,25 @@
     <string name="app_name">Flower Data</string>
 
     <!-- floating label -->
-    <string name="sheridan">Sheridan, 2021</string>
+    <string name="sheridan">Sheridan, 2022</string>
 
     <!-- menu items -->
     <string name="action_search">Search</string>
     <string name="action_about">About</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_clear">Clear</string>
 
     <!-- about dialog -->
-    <string name="author">Alex Tetervak, Sheridan College, 2021</string>
+    <string name="author">Alex Tetervak, Sheridan College, 2022</string>
 
-    <!-- the list fragment -->
+    <!-- the list fragments -->
     <string name="flower_image">flower image</string>
-    <string name="list">List</string>
 
     <!-- details fragment -->
     <string name="wiki_link">Wikipedia</string>
 
-    <!-- search price fragment -->
-    <string name="find_price_less_than">Find price less than</string>
-    <string name="find_price">Find Price</string>
+    <!-- search fragment -->
+    <string name="find_cheaper_than">Find cheaper than</string>
 
     <!-- navigation labels -->
     <string name="fragment_details">Details</string>
@@ -28,5 +28,9 @@
     <string name="fragment_search">Search</string>
     <string name="fragment_about">About</string>
     <string name="fragment_wiki">Wikipedia</string>
+
+    <!-- error dialog -->
+    <string name="error_template">Error: %1$s</string>
+    <string name="cannot_load_the_data">Cannot load the data</string>
 
 </resources>

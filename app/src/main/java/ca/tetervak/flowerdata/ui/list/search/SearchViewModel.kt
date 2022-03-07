@@ -2,6 +2,7 @@ package ca.tetervak.flowerdata.ui.list.search
 
 import androidx.lifecycle.*
 import ca.tetervak.flowerdata.domain.Flower
+import ca.tetervak.flowerdata.domain.findCheaperThan
 import ca.tetervak.flowerdata.repository.FlowerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -16,16 +17,9 @@ class SearchViewModel @Inject constructor(
         priceMargin.value = margin
     }
 
-    private val flowerList: LiveData<List<Flower>> = repository.getAll()
+    private val flowerList: LiveData<List<Flower>> = repository.getAll().asLiveData()
     val searchResultList: LiveData<List<Flower>> =
         priceMargin.switchMap { margin ->
-            flowerList.map { list ->
-                list.filter { flower ->
-                    flower.price.substring(1).toFloat() < margin
-                }
-            }
+            flowerList.map { list -> list.findCheaperThan(margin) }
         }
-
-
-
 }

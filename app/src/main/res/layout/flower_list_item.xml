@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin"
-            android:text="@{flower.price}"
+            price="@{flower.price}"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="#2E7D32"
             tools:text="$2.25" />

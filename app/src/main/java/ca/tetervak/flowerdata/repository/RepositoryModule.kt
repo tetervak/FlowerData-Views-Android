@@ -12,5 +12,5 @@ abstract class RepositoryModule {
 
     @Singleton
     @Binds
-    abstract fun bindFlowerRepository(repository: FlowerRepositoryWeb): FlowerRepository
+    abstract fun bindFlowerRepository(repository: FlowerRepositoryWebRoom): FlowerRepository
 }

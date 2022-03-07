@@ -1,9 +1,9 @@
 package ca.tetervak.flowerdata.domain
 
 data class Flower(
-        val id: Int,
+        val id: String,
         val label: String,
-        val price: String,
+        val price: Float,
         val text: String,
         val imageUrl: String,
         val wikiUrl: String
