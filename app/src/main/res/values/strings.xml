@@ -2,14 +2,14 @@
     <string name="app_name">Flower Data</string>
 
     <!-- floating label -->
-    <string name="sheridan">Sheridan, 2021</string>
+    <string name="sheridan">Sheridan, 2022</string>
 
     <!-- menu items -->
     <string name="action_search">Search</string>
     <string name="action_about">About</string>
 
     <!-- about dialog -->
-    <string name="author">Alex Tetervak, Sheridan College, 2021</string>
+    <string name="author">Alex Tetervak, Sheridan College, 2022</string>
 
     <!-- the list fragment -->
     <string name="flower_image">flower image</string>
