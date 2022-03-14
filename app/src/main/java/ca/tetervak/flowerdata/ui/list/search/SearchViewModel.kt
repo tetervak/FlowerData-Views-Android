@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SearchViewModel @Inject constructor(
-    val repository: FlowerRepository
+    repository: FlowerRepository
 ) : ViewModel() {
 
     private val priceMargin = MutableLiveData<Float>(1F)

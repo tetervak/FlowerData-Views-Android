@@ -31,10 +31,10 @@ class FlowerRepositoryWeb @Inject constructor() : FlowerRepository {
 
 fun FlowerJson.asFlower(index: Int) =
     Flower(
-        index,
-        label,
-        price,
-        text,
-        IMAGE_FOLDER_URL + pictures.large,
-        wiki
+        id = index,
+        label = label,
+        price = price,
+        text = text,
+        imageUrl = IMAGE_FOLDER_URL + pictures.large,
+        wikiUrl = wiki
     )
