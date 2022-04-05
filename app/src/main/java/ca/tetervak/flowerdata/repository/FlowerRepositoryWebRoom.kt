@@ -36,8 +36,7 @@ class FlowerRepositoryWebRoom @Inject constructor(
             catalog.flowers.map { flowerJson ->
                 flowerJson.asEntity()
             }
-        flowerDao.deleteAll()
-        flowerDao.insert(entityList)
+        flowerDao.refresh(entityList)
     }
 
     override suspend fun clear() {
