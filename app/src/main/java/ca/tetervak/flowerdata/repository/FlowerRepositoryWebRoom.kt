@@ -3,10 +3,7 @@ package ca.tetervak.flowerdata.repository
 import ca.tetervak.flowerdata.database.FlowerDao
 import ca.tetervak.flowerdata.database.FlowerEntity
 import ca.tetervak.flowerdata.domain.Flower
-import ca.tetervak.flowerdata.network.CatalogJson
-import ca.tetervak.flowerdata.network.FlowerDataApi
-import ca.tetervak.flowerdata.network.FlowerJson
-import ca.tetervak.flowerdata.network.IMAGE_FOLDER_URL
+import ca.tetervak.flowerdata.network.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -31,11 +28,13 @@ class FlowerRepositoryWebRoom @Inject constructor(
             .flowOn(Dispatchers.IO)
 
     override suspend fun refresh() {
-        val catalog: CatalogJson = FlowerDataApi.retrofitService.getCatalog()
+        val dataJson: DataJson = FlowerDataApi.retrofitService.getFlowerData()
+        val catalog: CatalogJson = dataJson._embedded
         val entityList: List<FlowerEntity> =
             catalog.flowers.map { flowerJson ->
                 flowerJson.asEntity()
             }
+        flowerDao.deleteAll()
         flowerDao.insert(entityList)
     }
 

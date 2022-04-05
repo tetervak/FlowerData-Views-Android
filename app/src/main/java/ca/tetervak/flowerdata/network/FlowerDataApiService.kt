@@ -16,8 +16,8 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface FlowerDataApiService {
-    @GET("catalog.json")
-    suspend fun getCatalog(): CatalogJson
+    @GET("flowers")
+    suspend fun getFlowerData(): DataJson
 }
 
 object FlowerDataApi {
