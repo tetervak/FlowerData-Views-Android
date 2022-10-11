@@ -7,20 +7,20 @@ import kotlinx.coroutines.flow.Flow
 interface FlowerDao {
 
     @Query("SELECT * FROM flowers")
-    fun getAll(): Flow<List<FlowerEntity>>
+    fun getAllFlowerEntitiesFlow(): Flow<List<FlowerEntity>>
 
     @Query("SELECT * FROM flowers WHERE id = :id")
-    fun get(id: String): Flow<FlowerEntity>
+    fun getFlowerEntityByIdFlow(id: String): Flow<FlowerEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(list: List<FlowerEntity>)
+    suspend fun insertFlowerEntityList(list: List<FlowerEntity>)
 
     @Query("DELETE FROM flowers")
-    suspend fun deleteAll()
+    suspend fun deleteAllFlowerEntities()
 
     @Transaction
     suspend fun refresh(list: List<FlowerEntity>){
-        deleteAll()
-        insert(list)
+        deleteAllFlowerEntities()
+        insertFlowerEntityList(list)
     }
 }

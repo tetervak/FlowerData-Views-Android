@@ -17,16 +17,16 @@ class FlowerRepositoryWebRoom @Inject constructor(
     private val flowerDao: FlowerDao
 ) : FlowerRepository {
 
-    override fun getAll(): Flow<List<Flower>> =
-        flowerDao.getAll()
+    override fun getAllFlowersFlow(): Flow<List<Flower>> =
+        flowerDao.getAllFlowerEntitiesFlow()
             .map { entityList ->
                 entityList.map { entity ->
                     entity.asFlower()
                 }
             }.flowOn(Dispatchers.IO)
 
-    override fun get(id: String): Flow<Flower> =
-        flowerDao.get(id)
+    override fun getFlowerByIdFlow(id: String): Flow<Flower> =
+        flowerDao.getFlowerEntityByIdFlow(id)
             .map { entity -> entity.asFlower() }
             .flowOn(Dispatchers.IO)
 
@@ -40,7 +40,7 @@ class FlowerRepositoryWebRoom @Inject constructor(
     }
 
     override suspend fun clear() {
-        flowerDao.deleteAll()
+        flowerDao.deleteAllFlowerEntities()
     }
 }
 
