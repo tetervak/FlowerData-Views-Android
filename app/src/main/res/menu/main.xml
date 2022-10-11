@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.tetervak.flowerdata.MainActivity">
     <item
-        android:id="@+id/nav_search"
+        android:id="@+id/searchFragment"
         android:title="@string/action_search"
         app:showAsAction="never" />
     <item

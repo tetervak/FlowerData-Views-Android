@@ -28,7 +28,8 @@ class FlowerDetailsFragment : Fragment() {
 
         binding.wikiLink.setOnClickListener {
             findNavController().navigate(
-                FlowerDetailsFragmentDirections.actionDetailsToWiki(safeArgs.flowerId)
+                FlowerDetailsFragmentDirections
+                    .actionDetailsFragmentToWikiFragment(safeArgs.flowerId)
             )
         }
 

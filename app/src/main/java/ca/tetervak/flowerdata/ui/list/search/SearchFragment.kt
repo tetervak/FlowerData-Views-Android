@@ -30,7 +30,7 @@ class SearchFragment: Fragment()  {
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.recyclerView.addItemDecoration(divider)
         binding.recyclerView.adapter = FlowerListAdapter { flower ->
-            val action = SearchFragmentDirections.actionSearchToDetails(flower.id)
+            val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(flower.id)
             navController.navigate(action)
         }
 

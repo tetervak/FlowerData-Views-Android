@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_catalog">
+    app:startDestination="@id/catalogFragment">
     <fragment
-        android:id="@+id/nav_catalog"
+        android:id="@+id/catalogFragment"
         android:name="ca.tetervak.flowerdata.ui.list.catalog.CatalogFragment"
         android:label="@string/fragment_catalog"
         tools:layout="@layout/catalog_fragment">
         <action
-            android:id="@+id/action_catalog_to_details"
-            app:destination="@id/nav_details" />
+            android:id="@+id/action_catalogFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/nav_details"
+        android:id="@+id/detailsFragment"
         android:name="ca.tetervak.flowerdata.ui.details.FlowerDetailsFragment"
         android:label="@string/fragment_details"
         tools:layout="@layout/flower_details_fragment">
@@ -22,20 +22,20 @@
             android:name="flowerId"
             app:argType="string" />
         <action
-            android:id="@+id/action_details_to_wiki"
-            app:destination="@id/nav_wiki" />
+            android:id="@+id/action_detailsFragment_to_wikiFragment"
+            app:destination="@id/wikiFragment" />
     </fragment>
     <fragment
-        android:id="@+id/nav_search"
+        android:id="@+id/searchFragment"
         android:name="ca.tetervak.flowerdata.ui.list.search.SearchFragment"
         android:label="@string/fragment_search"
         tools:layout="@layout/search_fragment">
         <action
-            android:id="@+id/action_search_to_details"
-            app:destination="@id/nav_details" />
+            android:id="@+id/action_searchFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/nav_wiki"
+        android:id="@+id/wikiFragment"
         android:name="ca.tetervak.flowerdata.ui.wikipedia.WikiFragment"
         android:label="@string/fragment_wiki"
         tools:layout="@layout/wiki_fragment" >

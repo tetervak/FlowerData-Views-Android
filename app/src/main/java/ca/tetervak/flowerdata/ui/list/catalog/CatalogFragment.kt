@@ -36,7 +36,7 @@ class CatalogFragment : Fragment() {
         val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.recyclerView.addItemDecoration(divider)
         binding.recyclerView.adapter = FlowerListAdapter { flower ->
-            val action = CatalogFragmentDirections.actionCatalogToDetails(flower.id)
+            val action = CatalogFragmentDirections.actionCatalogFragmentToDetailsFragment(flower.id)
             navController.navigate(action)
         }
 
