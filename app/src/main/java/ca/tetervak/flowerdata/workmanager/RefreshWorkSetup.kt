@@ -20,7 +20,7 @@ fun setupRefreshWork(context: Context) {
 
     WorkManager.getInstance(context).enqueueUniquePeriodicWork(
         RefreshWorker.WORK_NAME,
-        ExistingPeriodicWorkPolicy.KEEP,
+        ExistingPeriodicWorkPolicy.REPLACE,
         repeatingRequest
     )
 }
