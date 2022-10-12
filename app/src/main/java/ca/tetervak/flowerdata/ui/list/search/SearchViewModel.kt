@@ -12,14 +12,14 @@ class SearchViewModel @Inject constructor(
     val repository: FlowerRepository
 ) : ViewModel() {
 
-    private val priceMargin = MutableLiveData<Float>(1F)
+    private val livePriceMargin = MutableLiveData<Float>(1F)
     fun setPriceMargin(margin: Float){
-        priceMargin.value = margin
+        livePriceMargin.value = margin
     }
 
-    private val flowerList: LiveData<List<Flower>> = repository.getAllFlowersFlow().asLiveData()
-    val searchResultList: LiveData<List<Flower>> =
-        priceMargin.switchMap { margin ->
-            flowerList.map { list -> list.findCheaperThan(margin) }
+    private val liveFlowerList: LiveData<List<Flower>> = repository.getAllFlowersFlow().asLiveData()
+    val liveSearchResultList: LiveData<List<Flower>> =
+        livePriceMargin.switchMap { margin ->
+            liveFlowerList.map { list -> list.findCheaperThan(margin) }
         }
 }

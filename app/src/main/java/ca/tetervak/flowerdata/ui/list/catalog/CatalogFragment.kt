@@ -46,7 +46,7 @@ class CatalogFragment : Fragment() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.refresh()
         }
-        viewModel.status.observe(viewLifecycleOwner){ status ->
+        viewModel.liveStatus.observe(viewLifecycleOwner){ status ->
 
             binding.swipeRefresh.isRefreshing =
                 status == CatalogViewModel.Status.REFRESHING

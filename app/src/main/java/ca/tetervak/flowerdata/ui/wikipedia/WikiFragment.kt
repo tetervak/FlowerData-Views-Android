@@ -23,7 +23,7 @@ class WikiFragment : Fragment() {
         val binding = WikiFragmentBinding.inflate(layoutInflater)
 
         binding.webview.webViewClient = WebViewClient()
-        viewModel.flower.observe(viewLifecycleOwner){ flower ->
+        viewModel.liveFlower.observe(viewLifecycleOwner){ flower ->
             binding.webview.loadUrl(flower.wikiUrl)
         }
 
