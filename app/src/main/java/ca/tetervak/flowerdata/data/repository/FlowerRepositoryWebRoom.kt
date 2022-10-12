@@ -1,12 +1,12 @@
-package ca.tetervak.flowerdata.repository
+package ca.tetervak.flowerdata.data.repository
 
-import ca.tetervak.flowerdata.database.FlowerDao
-import ca.tetervak.flowerdata.database.FlowerEntity
+import ca.tetervak.flowerdata.data.database.FlowerDao
+import ca.tetervak.flowerdata.data.database.FlowerEntity
 import ca.tetervak.flowerdata.domain.Flower
-import ca.tetervak.flowerdata.network.CatalogJson
-import ca.tetervak.flowerdata.network.FlowerDataApi
-import ca.tetervak.flowerdata.network.FlowerJson
-import ca.tetervak.flowerdata.network.IMAGE_FOLDER_URL
+import ca.tetervak.flowerdata.data.webdata.json.CatalogJson
+import ca.tetervak.flowerdata.data.webdata.json.FlowerJson
+import ca.tetervak.flowerdata.data.webdata.UrlData
+import ca.tetervak.flowerdata.data.webdata.WebDataApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
@@ -14,7 +14,8 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class FlowerRepositoryWebRoom @Inject constructor(
-    private val flowerDao: FlowerDao
+    private val flowerDao: FlowerDao,
+    private val webDataApi: WebDataApi
 ) : FlowerRepository {
 
     override fun getAllFlowersFlow(): Flow<List<Flower>> =
@@ -31,7 +32,7 @@ class FlowerRepositoryWebRoom @Inject constructor(
             .flowOn(Dispatchers.IO)
 
     override suspend fun refresh() {
-        val catalog: CatalogJson = FlowerDataApi.retrofitService.getCatalog()
+        val catalog: CatalogJson = webDataApi.getCatalog()
         val entityList: List<FlowerEntity> =
             catalog.flowers.map { flowerJson ->
                 flowerJson.asEntity()
@@ -50,11 +51,9 @@ fun FlowerEntity.asFlower() =
         label = label,
         price = price,
         text = text,
-        imageUrl = IMAGE_FOLDER_URL + imageFile,
+        imageUrl = UrlData.IMAGE_FOLDER_URL + imageFile,
         wikiUrl = wikiUrl
     )
-
-
 
 fun FlowerJson.asEntity() =
     FlowerEntity(

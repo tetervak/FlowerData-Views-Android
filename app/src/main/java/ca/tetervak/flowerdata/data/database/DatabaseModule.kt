@@ -1,4 +1,4 @@
-package ca.tetervak.flowerdata.database
+package ca.tetervak.flowerdata.data.database
 
 import android.content.Context
 import android.util.Log

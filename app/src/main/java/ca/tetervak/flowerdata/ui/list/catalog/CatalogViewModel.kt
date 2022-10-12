@@ -2,7 +2,7 @@ package ca.tetervak.flowerdata.ui.list.catalog
 
 import androidx.lifecycle.*
 import ca.tetervak.flowerdata.domain.Flower
-import ca.tetervak.flowerdata.repository.FlowerRepository
+import ca.tetervak.flowerdata.data.repository.FlowerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

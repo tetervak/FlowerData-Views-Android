@@ -1,4 +1,4 @@
-package ca.tetervak.flowerdata.database
+package ca.tetervak.flowerdata.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

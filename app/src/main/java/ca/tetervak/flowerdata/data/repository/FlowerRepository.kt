@@ -1,4 +1,4 @@
-package ca.tetervak.flowerdata.repository
+package ca.tetervak.flowerdata.data.repository
 
 import ca.tetervak.flowerdata.domain.Flower
 import kotlinx.coroutines.flow.Flow

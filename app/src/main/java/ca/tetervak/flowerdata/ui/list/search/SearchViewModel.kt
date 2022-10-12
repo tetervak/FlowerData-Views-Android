@@ -3,7 +3,7 @@ package ca.tetervak.flowerdata.ui.list.search
 import androidx.lifecycle.*
 import ca.tetervak.flowerdata.domain.Flower
 import ca.tetervak.flowerdata.domain.findCheaperThan
-import ca.tetervak.flowerdata.repository.FlowerRepository
+import ca.tetervak.flowerdata.data.repository.FlowerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

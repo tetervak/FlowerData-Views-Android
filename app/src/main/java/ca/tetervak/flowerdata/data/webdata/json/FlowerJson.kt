@@ -1,4 +1,4 @@
-package ca.tetervak.flowerdata.network
+package ca.tetervak.flowerdata.data.webdata.json
 
 data class FlowerJson(
     val id: String,
