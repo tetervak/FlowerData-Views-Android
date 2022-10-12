@@ -17,31 +17,32 @@ class CatalogViewModel @Inject constructor(
 
     val liveFlowerList: LiveData<List<Flower>> = repository.getAllFlowersFlow().asLiveData()
 
-    enum class Status { STARTED, REFRESHING, LOADED, ERROR }
-    private val _liveStatus = MutableLiveData(Status.STARTED)
+    enum class Status { SUCCESS, LOADING, ERROR }
+
+    private val _liveStatus = MutableLiveData(Status.SUCCESS)
     val liveStatus: LiveData<Status> = _liveStatus
 
-    fun refresh(){
-        viewModelScope.launch(Dispatchers.IO){
-            _liveStatus.postValue(Status.REFRESHING)
+    fun refresh() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _liveStatus.postValue(Status.LOADING)
             delay(1500) // fake delay
-            try{
+            try {
                 repository.refresh()
-                _liveStatus.postValue(Status.LOADED)
-            }catch(error: IOException){
+                _liveStatus.postValue(Status.SUCCESS)
+            } catch (error: IOException) {
                 _liveStatus.postValue(Status.ERROR)
             }
         }
     }
 
-    fun clear(){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.clear()
-            _liveStatus.postValue(Status.STARTED)
+    fun clearLocalData() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.clearLocalData()
+            _liveStatus.postValue(Status.SUCCESS)
         }
     }
 
-    fun reset(){
-        _liveStatus.value = Status.STARTED
+    fun clearError() {
+        _liveStatus.value = Status.SUCCESS
     }
 }

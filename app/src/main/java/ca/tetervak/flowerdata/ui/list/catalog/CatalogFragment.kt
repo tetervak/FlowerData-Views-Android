@@ -9,8 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import ca.tetervak.flowerdata.R
 import ca.tetervak.flowerdata.databinding.CatalogFragmentBinding
-import ca.tetervak.flowerdata.ui.dialogs.isErrorDialogShown
-import ca.tetervak.flowerdata.ui.dialogs.showErrorDialog
+import ca.tetervak.flowerdata.ui.dialogs.showInfoDialog
 import ca.tetervak.flowerdata.ui.list.FlowerListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -46,19 +45,17 @@ class CatalogFragment : Fragment() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.refresh()
         }
-        viewModel.liveStatus.observe(viewLifecycleOwner){ status ->
+        viewModel.liveStatus.observe(viewLifecycleOwner) { status ->
 
             binding.swipeRefresh.isRefreshing =
-                status == CatalogViewModel.Status.REFRESHING
+                status == CatalogViewModel.Status.LOADING
 
-            if(status == CatalogViewModel.Status.ERROR){
-                if(!isErrorDialogShown()){
-                    showErrorDialog(
-                        title = getString(R.string.app_name),
-                        message = getString(R.string.cannot_load_the_data)
-                    )
-                    viewModel.reset()
-                }
+            if (status == CatalogViewModel.Status.ERROR) {
+                showInfoDialog(
+                    title = getString(R.string.app_name),
+                    message = getString(R.string.cannot_load_the_data)
+                )
+                viewModel.clearError()
             }
         }
 
@@ -76,8 +73,8 @@ class CatalogFragment : Fragment() {
                 viewModel.refresh()
                 true
             }
-            R.id.action_clear ->{
-                viewModel.clear()
+            R.id.action_clear -> {
+                viewModel.clearLocalData()
                 true
             }
             else -> super.onOptionsItemSelected(item)

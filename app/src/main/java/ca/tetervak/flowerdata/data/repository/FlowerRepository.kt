@@ -7,5 +7,5 @@ interface FlowerRepository {
     fun getAllFlowersFlow(): Flow<List<Flower>>
     fun getFlowerByIdFlow(id: String): Flow<Flower>
     suspend fun refresh()
-    suspend fun clear()
+    suspend fun clearLocalData()
 }

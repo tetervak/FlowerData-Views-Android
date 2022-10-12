@@ -40,7 +40,7 @@ class FlowerRepositoryWebRoom @Inject constructor(
         flowerDao.refresh(entityList)
     }
 
-    override suspend fun clear() {
+    override suspend fun clearLocalData() {
         flowerDao.deleteAllFlowerEntities()
     }
 }
